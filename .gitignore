@@ -1,0 +1,13 @@
+.DS_Store
+._.DS_Store
+*.pyc
+*.root
+*.pdf
+*.txt
+*.log
+*.dat
+smeft/madgraph/output/*
+smeft/forIlaria
+MG5_debug
+smeft/madgraph/commands/*/*.sh
+fit

@@ -1,0 +1,812 @@
+{
+  "cee2222": {
+    "zmmmm": {
+      "interference": 0.001021194605009634, 
+      "purebsm": 2.9556840077071294e-06
+    }, 
+    "zttmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }
+  }, 
+  "cee2222+1p0xcee2233": {
+    "zmmmm": {
+      "interference": 0.001021194605009634, 
+      "purebsm": 2.9556840077071294e-06
+    }, 
+    "zttmm": {
+      "interference": 0.00028115408225905464, 
+      "purebsm": 3.9390218948230003e-07
+    }
+  }, 
+  "cee2222+1p0xcle2222": {
+    "zmmmm": {
+      "interference": 0.0016333333333333334, 
+      "purebsm": 3.8188824662813095e-06
+    }, 
+    "zttmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }
+  }, 
+  "cee2222+1p0xcle2233": {
+    "zmmmm": {
+      "interference": 0.001021194605009634, 
+      "purebsm": 2.9556840077071294e-06
+    }, 
+    "zttmm": {
+      "interference": 0.0003333333333333334, 
+      "purebsm": 4.6060978105177006e-07
+    }
+  }, 
+  "cee2222+1p0xcle2332": {
+    "zmmmm": {
+      "interference": 0.001021194605009634, 
+      "purebsm": 2.9556840077071294e-06
+    }, 
+    "zttmm": {
+      "interference": 0.0, 
+      "purebsm": 9.262328626969512e-07
+    }
+  }, 
+  "cee2222+1p0xcle3322": {
+    "zmmmm": {
+      "interference": 0.001021194605009634, 
+      "purebsm": 2.9556840077071294e-06
+    }, 
+    "zttmm": {
+      "interference": 0.000333231021076325, 
+      "purebsm": 4.61632903621854e-07
+    }
+  }, 
+  "cee2222+1p0xcll2222": {
+    "zmmmm": {
+      "interference": 0.002352601156069364, 
+      "purebsm": 6.799614643545279e-06
+    }, 
+    "zttmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }
+  }, 
+  "cee2222+1p0xcll2233": {
+    "zmmmm": {
+      "interference": 0.001021194605009634, 
+      "purebsm": 2.9556840077071294e-06
+    }, 
+    "zttmm": {
+      "interference": 0.0003652547575199509, 
+      "purebsm": 5.117659095559648e-07
+    }
+  }, 
+  "cee2222+1p0xcll2332": {
+    "zmmmm": {
+      "interference": 0.001021194605009634, 
+      "purebsm": 2.9556840077071294e-06
+    }, 
+    "zttmm": {
+      "interference": 0.0003652547575199509, 
+      "purebsm": 5.117659095559648e-07
+    }
+  }, 
+  "cee2233": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.00028115408225905464, 
+      "purebsm": 3.9390218948230003e-07
+    }
+  }, 
+  "cee2233+1p0xcee2222": {
+    "zmmmm": {
+      "interference": 0.001021194605009634, 
+      "purebsm": 2.9556840077071294e-06
+    }, 
+    "zttmm": {
+      "interference": 0.00028115408225905464, 
+      "purebsm": 3.9390218948230003e-07
+    }
+  }, 
+  "cee2233+1p0xcle2222": {
+    "zmmmm": {
+      "interference": 0.0006107899807321773, 
+      "purebsm": 8.66859344894027e-07
+    }, 
+    "zttmm": {
+      "interference": 0.00028115408225905464, 
+      "purebsm": 3.9390218948230003e-07
+    }
+  }, 
+  "cee2233+1p0xcle2233": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0006140781665643544, 
+      "purebsm": 8.549212195621036e-07
+    }
+  }, 
+  "cee2233+1p0xcle2332": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.00028115408225905464, 
+      "purebsm": 1.3177818702680582e-06
+    }
+  }, 
+  "cee2233+1p0xcle3322": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0006146920401064048, 
+      "purebsm": 8.595252711274811e-07
+    }
+  }, 
+  "cee2233+1p0xcll2222": {
+    "zmmmm": {
+      "interference": 0.0013246628131021196, 
+      "purebsm": 3.847784200385356e-06
+    }, 
+    "zttmm": {
+      "interference": 0.00028115408225905464, 
+      "purebsm": 3.9390218948230003e-07
+    }
+  }, 
+  "cee2233+1p0xcll2233": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0006449764681808882, 
+      "purebsm": 9.063842848373236e-07
+    }
+  }, 
+  "cee2233+1p0xcll2332": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0006449764681808882, 
+      "purebsm": 9.063842848373236e-07
+    }
+  }, 
+  "cle2222": {
+    "zmmmm": {
+      "interference": 0.0006107899807321773, 
+      "purebsm": 8.66859344894027e-07
+    }, 
+    "zttmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }
+  }, 
+  "cle2222+1p0xcee2222": {
+    "zmmmm": {
+      "interference": 0.0016333333333333334, 
+      "purebsm": 3.8188824662813095e-06
+    }, 
+    "zttmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }
+  }, 
+  "cle2222+1p0xcee2233": {
+    "zmmmm": {
+      "interference": 0.0006107899807321773, 
+      "purebsm": 8.66859344894027e-07
+    }, 
+    "zttmm": {
+      "interference": 0.00028115408225905464, 
+      "purebsm": 3.9390218948230003e-07
+    }
+  }, 
+  "cle2222+1p0xcle2233": {
+    "zmmmm": {
+      "interference": 0.0006107899807321773, 
+      "purebsm": 8.66859344894027e-07
+    }, 
+    "zttmm": {
+      "interference": 0.0003333333333333334, 
+      "purebsm": 4.6060978105177006e-07
+    }
+  }, 
+  "cle2222+1p0xcle2332": {
+    "zmmmm": {
+      "interference": 0.0006107899807321773, 
+      "purebsm": 8.66859344894027e-07
+    }, 
+    "zttmm": {
+      "interference": 0.0, 
+      "purebsm": 9.262328626969512e-07
+    }
+  }, 
+  "cle2222+1p0xcle3322": {
+    "zmmmm": {
+      "interference": 0.0006107899807321773, 
+      "purebsm": 8.66859344894027e-07
+    }, 
+    "zttmm": {
+      "interference": 0.000333231021076325, 
+      "purebsm": 4.61632903621854e-07
+    }
+  }, 
+  "cle2222+1p0xcll2222": {
+    "zmmmm": {
+      "interference": 0.0019402697495183043, 
+      "purebsm": 4.710982658959537e-06
+    }, 
+    "zttmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }
+  }, 
+  "cle2222+1p0xcll2233": {
+    "zmmmm": {
+      "interference": 0.0006107899807321773, 
+      "purebsm": 8.66859344894027e-07
+    }, 
+    "zttmm": {
+      "interference": 0.0003652547575199509, 
+      "purebsm": 5.117659095559648e-07
+    }
+  }, 
+  "cle2222+1p0xcll2332": {
+    "zmmmm": {
+      "interference": 0.0006107899807321773, 
+      "purebsm": 8.66859344894027e-07
+    }, 
+    "zttmm": {
+      "interference": 0.0003652547575199509, 
+      "purebsm": 5.117659095559648e-07
+    }
+  }, 
+  "cle2233": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0003333333333333334, 
+      "purebsm": 4.6060978105177006e-07
+    }
+  }, 
+  "cle2233+1p0xcee2222": {
+    "zmmmm": {
+      "interference": 0.001021194605009634, 
+      "purebsm": 2.9556840077071294e-06
+    }, 
+    "zttmm": {
+      "interference": 0.0003333333333333334, 
+      "purebsm": 4.6060978105177006e-07
+    }
+  }, 
+  "cle2233+1p0xcee2233": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0006140781665643544, 
+      "purebsm": 8.549212195621036e-07
+    }
+  }, 
+  "cle2233+1p0xcle2222": {
+    "zmmmm": {
+      "interference": 0.0006107899807321773, 
+      "purebsm": 8.66859344894027e-07
+    }, 
+    "zttmm": {
+      "interference": 0.0003333333333333334, 
+      "purebsm": 4.6060978105177006e-07
+    }
+  }, 
+  "cle2233+1p0xcle2332": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0003333333333333334, 
+      "purebsm": 1.386331082463679e-06
+    }
+  }, 
+  "cle2233+1p0xcle3322": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0006652342950685492, 
+      "purebsm": 9.244935543278085e-07
+    }
+  }, 
+  "cle2233+1p0xcll2222": {
+    "zmmmm": {
+      "interference": 0.0013246628131021196, 
+      "purebsm": 3.847784200385356e-06
+    }, 
+    "zttmm": {
+      "interference": 0.0003333333333333334, 
+      "purebsm": 4.6060978105177006e-07
+    }
+  }, 
+  "cle2233+1p0xcll2233": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0006979742173112339, 
+      "purebsm": 9.831184775936157e-07
+    }
+  }, 
+  "cle2233+1p0xcll2332": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0006979742173112339, 
+      "purebsm": 9.831184775936157e-07
+    }
+  }, 
+  "cle2332": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0, 
+      "purebsm": 9.262328626969512e-07
+    }
+  }, 
+  "cle2332+1p0xcee2222": {
+    "zmmmm": {
+      "interference": 0.001021194605009634, 
+      "purebsm": 2.9556840077071294e-06
+    }, 
+    "zttmm": {
+      "interference": 0.0, 
+      "purebsm": 9.262328626969512e-07
+    }
+  }, 
+  "cle2332+1p0xcee2233": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.00028115408225905464, 
+      "purebsm": 1.3177818702680582e-06
+    }
+  }, 
+  "cle2332+1p0xcle2222": {
+    "zmmmm": {
+      "interference": 0.0006107899807321773, 
+      "purebsm": 8.66859344894027e-07
+    }, 
+    "zttmm": {
+      "interference": 0.0, 
+      "purebsm": 9.262328626969512e-07
+    }
+  }, 
+  "cle2332+1p0xcle2233": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0003333333333333334, 
+      "purebsm": 1.386331082463679e-06
+    }
+  }, 
+  "cle2332+1p0xcle3322": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.000333231021076325, 
+      "purebsm": 1.388377327603847e-06
+    }
+  }, 
+  "cle2332+1p0xcll2222": {
+    "zmmmm": {
+      "interference": 0.0013246628131021196, 
+      "purebsm": 3.847784200385356e-06
+    }, 
+    "zttmm": {
+      "interference": 0.0, 
+      "purebsm": 9.262328626969512e-07
+    }
+  }, 
+  "cle2332+1p0xcll2233": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0003652547575199509, 
+      "purebsm": 1.4364640883977903e-06
+    }
+  }, 
+  "cle2332+1p0xcll2332": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0003652547575199509, 
+      "purebsm": 1.4364640883977903e-06
+    }
+  }, 
+  "cle3322": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.000333231021076325, 
+      "purebsm": 4.61632903621854e-07
+    }
+  }, 
+  "cle3322+1p0xcee2222": {
+    "zmmmm": {
+      "interference": 0.001021194605009634, 
+      "purebsm": 2.9556840077071294e-06
+    }, 
+    "zttmm": {
+      "interference": 0.000333231021076325, 
+      "purebsm": 4.61632903621854e-07
+    }
+  }, 
+  "cle3322+1p0xcee2233": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0006146920401064048, 
+      "purebsm": 8.595252711274811e-07
+    }
+  }, 
+  "cle3322+1p0xcle2222": {
+    "zmmmm": {
+      "interference": 0.0006107899807321773, 
+      "purebsm": 8.66859344894027e-07
+    }, 
+    "zttmm": {
+      "interference": 0.000333231021076325, 
+      "purebsm": 4.61632903621854e-07
+    }
+  }, 
+  "cle3322+1p0xcle2233": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0006652342950685492, 
+      "purebsm": 9.244935543278085e-07
+    }
+  }, 
+  "cle3322+1p0xcle2332": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.000333231021076325, 
+      "purebsm": 1.388377327603847e-06
+    }
+  }, 
+  "cle3322+1p0xcll2222": {
+    "zmmmm": {
+      "interference": 0.0013246628131021196, 
+      "purebsm": 3.847784200385356e-06
+    }, 
+    "zttmm": {
+      "interference": 0.000333231021076325, 
+      "purebsm": 4.61632903621854e-07
+    }
+  }, 
+  "cle3322+1p0xcll2233": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0006981788418252507, 
+      "purebsm": 9.729895641497852e-07
+    }
+  }, 
+  "cle3322+1p0xcll2332": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0006981788418252507, 
+      "purebsm": 9.729895641497852e-07
+    }
+  }, 
+  "cll2222": {
+    "zmmmm": {
+      "interference": 0.0013246628131021196, 
+      "purebsm": 3.847784200385356e-06
+    }, 
+    "zttmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }
+  }, 
+  "cll2222+1p0xcee2222": {
+    "zmmmm": {
+      "interference": 0.002352601156069364, 
+      "purebsm": 6.799614643545279e-06
+    }, 
+    "zttmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }
+  }, 
+  "cll2222+1p0xcee2233": {
+    "zmmmm": {
+      "interference": 0.0013246628131021196, 
+      "purebsm": 3.847784200385356e-06
+    }, 
+    "zttmm": {
+      "interference": 0.00028115408225905464, 
+      "purebsm": 3.9390218948230003e-07
+    }
+  }, 
+  "cll2222+1p0xcle2222": {
+    "zmmmm": {
+      "interference": 0.0019402697495183043, 
+      "purebsm": 4.710982658959537e-06
+    }, 
+    "zttmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }
+  }, 
+  "cll2222+1p0xcle2233": {
+    "zmmmm": {
+      "interference": 0.0013246628131021196, 
+      "purebsm": 3.847784200385356e-06
+    }, 
+    "zttmm": {
+      "interference": 0.0003333333333333334, 
+      "purebsm": 4.6060978105177006e-07
+    }
+  }, 
+  "cll2222+1p0xcle2332": {
+    "zmmmm": {
+      "interference": 0.0013246628131021196, 
+      "purebsm": 3.847784200385356e-06
+    }, 
+    "zttmm": {
+      "interference": 0.0, 
+      "purebsm": 9.262328626969512e-07
+    }
+  }, 
+  "cll2222+1p0xcle3322": {
+    "zmmmm": {
+      "interference": 0.0013246628131021196, 
+      "purebsm": 3.847784200385356e-06
+    }, 
+    "zttmm": {
+      "interference": 0.000333231021076325, 
+      "purebsm": 4.61632903621854e-07
+    }
+  }, 
+  "cll2222+1p0xcll2233": {
+    "zmmmm": {
+      "interference": 0.0013246628131021196, 
+      "purebsm": 3.847784200385356e-06
+    }, 
+    "zttmm": {
+      "interference": 0.0003652547575199509, 
+      "purebsm": 5.117659095559648e-07
+    }
+  }, 
+  "cll2222+1p0xcll2332": {
+    "zmmmm": {
+      "interference": 0.0013246628131021196, 
+      "purebsm": 3.847784200385356e-06
+    }, 
+    "zttmm": {
+      "interference": 0.0003652547575199509, 
+      "purebsm": 5.117659095559648e-07
+    }
+  }, 
+  "cll2233": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0003652547575199509, 
+      "purebsm": 5.117659095559648e-07
+    }
+  }, 
+  "cll2233+1p0xcee2222": {
+    "zmmmm": {
+      "interference": 0.001021194605009634, 
+      "purebsm": 2.9556840077071294e-06
+    }, 
+    "zttmm": {
+      "interference": 0.0003652547575199509, 
+      "purebsm": 5.117659095559648e-07
+    }
+  }, 
+  "cll2233+1p0xcee2233": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0006449764681808882, 
+      "purebsm": 9.063842848373236e-07
+    }
+  }, 
+  "cll2233+1p0xcle2222": {
+    "zmmmm": {
+      "interference": 0.0006107899807321773, 
+      "purebsm": 8.66859344894027e-07
+    }, 
+    "zttmm": {
+      "interference": 0.0003652547575199509, 
+      "purebsm": 5.117659095559648e-07
+    }
+  }, 
+  "cll2233+1p0xcle2233": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0006979742173112339, 
+      "purebsm": 9.831184775936157e-07
+    }
+  }, 
+  "cll2233+1p0xcle2332": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0003652547575199509, 
+      "purebsm": 1.4364640883977903e-06
+    }
+  }, 
+  "cll2233+1p0xcle3322": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0006981788418252507, 
+      "purebsm": 9.729895641497852e-07
+    }
+  }, 
+  "cll2233+1p0xcll2222": {
+    "zmmmm": {
+      "interference": 0.0013246628131021196, 
+      "purebsm": 3.847784200385356e-06
+    }, 
+    "zttmm": {
+      "interference": 0.0003652547575199509, 
+      "purebsm": 5.117659095559648e-07
+    }
+  }, 
+  "cll2233+1p0xcll2332": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0007305095150399018, 
+      "purebsm": 2.047268262737876e-06
+    }
+  }, 
+  "cll2332": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0003652547575199509, 
+      "purebsm": 5.117659095559648e-07
+    }
+  }, 
+  "cll2332+1p0xcee2222": {
+    "zmmmm": {
+      "interference": 0.001021194605009634, 
+      "purebsm": 2.9556840077071294e-06
+    }, 
+    "zttmm": {
+      "interference": 0.0003652547575199509, 
+      "purebsm": 5.117659095559648e-07
+    }
+  }, 
+  "cll2332+1p0xcee2233": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0006449764681808882, 
+      "purebsm": 9.063842848373236e-07
+    }
+  }, 
+  "cll2332+1p0xcle2222": {
+    "zmmmm": {
+      "interference": 0.0006107899807321773, 
+      "purebsm": 8.66859344894027e-07
+    }, 
+    "zttmm": {
+      "interference": 0.0003652547575199509, 
+      "purebsm": 5.117659095559648e-07
+    }
+  }, 
+  "cll2332+1p0xcle2233": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0006979742173112339, 
+      "purebsm": 9.831184775936157e-07
+    }
+  }, 
+  "cll2332+1p0xcle2332": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0003652547575199509, 
+      "purebsm": 1.4364640883977903e-06
+    }
+  }, 
+  "cll2332+1p0xcle3322": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0006981788418252507, 
+      "purebsm": 9.729895641497852e-07
+    }
+  }, 
+  "cll2332+1p0xcll2222": {
+    "zmmmm": {
+      "interference": 0.0013246628131021196, 
+      "purebsm": 3.847784200385356e-06
+    }, 
+    "zttmm": {
+      "interference": 0.0003652547575199509, 
+      "purebsm": 5.117659095559648e-07
+    }
+  }, 
+  "cll2332+1p0xcll2233": {
+    "zmmmm": {
+      "interference": 0.0, 
+      "purebsm": 0.0
+    }, 
+    "zttmm": {
+      "interference": 0.0007305095150399018, 
+      "purebsm": 2.047268262737876e-06
+    }
+  }
+}

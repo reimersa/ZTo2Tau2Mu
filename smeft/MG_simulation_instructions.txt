@@ -1,0 +1,177 @@
+GENERAL STUFF
+
+I suggest to import the model with the restriction card restrict_Zmmtt.
+
+>  import model SMEFTsim_top_alphaScheme_UFO-Zmmtt
+
+* it removes all masses (including mtau, which should be restored to evaluate tau decays) and all operators that do not enter Z>mmtt, Z>mmmm or ta>mvv
+
+* the operators that are kept are set to random values all different from one another.
+  ! when simulating a process one has to set to 0 the irrelevant ones in the param card.
+  alternatively, one can create dedicated restrictions with only one nonzero operator each. in this case the model has to be re imported every time when changing operator.
+
+* the values of the SM constants and masses are the SMEFTsim default. feel free to tune them to what is currently used in CMS.
+
+* the mapping of naming of the operators in the card vs the notation in the notes is the same as in table 22 in the manual (page 83):
+https://arxiv.org/pdf/2012.11343.pdf
+
+
+
+
+
+SM SIMULATION
+
+> generate process z > mu+ mu- ta+ ta- NP=0 SMHLOOP=0 NPprop=0
+
+NP=0 forbids operator insertions in vertices
+SMHLOOP=0 avoids HAA, HZA couplings (which do not enter this process anyways but to be safe)
+NPprop=0 forbids operator insertions in propagators, that are irrelevant here
+
+
+
+
+
+SMEFT SIMULATION: eg INTERFERENCE OF OPERATOR Cll2233 WITH SM
+
+(A) direct simulation
+
+> generate process  z > mu+ mu- ta+ ta- NP<=1 NP^2==1 SMHLOOP=0 NPprop=0
+
+and then set  cll2233=1 and the others to 0 in the param card.
+
+* NP specifies the order at the amplitude level. NP<=1 means SM + 1 insertion diagrams. for interference we need both
+  NP^2 specifies the order at the amplitude^2 level. NP^2==1 means we want exactly 1 power of a coefficient in the squared amp, i.e. pure interference
+  more on the interaction orders is in sec 8.2 in the manual
+
+* with the syntax above, MG draws all SMEFT diagrams, and then those without cll2233 will evaluate to 0 in the simulation. 
+alternatively, one may want to forbid the irrelevant diagrams from being generated at all.
+one way of doing this is to use restriction cards operator by operator: in this way only diagrams with the operator imported will be generated.
+another way is to use interaction orders: each operator is assigned NP=1 and also a specific interaction order, that is the same for all flavors. 
+the assignments are the following:
+
+cHDD     NPcHDD
+cHWB     NPcHWB
+cHl122   NPcHl1
+cHl133   NPcHl1
+cHl311   NPcHl3
+cHl322   NPcHl3
+cHl333   NPcHl3
+cHe22    NPcHe
+cHe33    NPcHe
+cll2222  NPcll
+cll2233  NPcll 
+cll1221  NPcll1  (!! note that for cll iijj and ijji have different orders)
+cll2332  NPcll1
+cee2222  NPcee
+cee2233  NPcee
+cle2222  NPcle
+cle2233  NPcle
+cle3322  NPcle
+cle2332  NPcle1  (!!  iijj and ijji have different order)
+
+for instance, if instead of NP<=1 NP^2==1 we use the syntax
+
+   NP<=1 NP^2==1 NPcll^2==1
+
+we will only get diagrams with cll2222 or cll2233 and none of the others.
+the logic is that we require exactly 1 power of any wilson coefficient AND exactly one power of a cll coefficient in the squared amplitude.
+so there's no way another operator could be inserted.
+
+
+* if you use QED/QCD orders in the simulation, it might be that this need to be changed for the smeft, because smeft vertices typically carry QED too, in powers that are not always obvious to predict.
+
+
+(B) with reweighting
+
+in this case one starts with an existing sample and sets up a reweight_card.dat in the Cards/ folder.
+then the reweigthig can be run standalone with
+
+> PROC_DIR/bin/madevent reweight
+
+from the shell (not mg)
+
+* all the MG folder from the initial sample is needed (not just the lhe), because the reweight needs to evalate again the original matrix element
+* the initial sample must have a lot of statistics everywhere, to avoid that statistical uncertainties are inflated by the weights ratio
+
+more instructions are here 
+https://cp3.irmp.ucl.ac.be/projects/madgraph/wiki/Reweight
+
+
+an example of reweight card  is this:
+
+-------------------
+change model SMEFTsim_top_alphaScheme_UFO-Zmmtt
+change process z > mu+ mu- ta+ ta- NP=1 NP^2==1 SMHLOOP=0 NPprop=0
+
+launch --rwgt_name=cll2233
+set smeft 2 0 # cHDD
+set smeft 9 0 # cHWB
+set smeft 110 0 # cHl122
+set smeft 111 0 # cHl133
+set smeft 112 0 # cHl311
+set smeft 113 0 # cHl322
+set smeft 114 0 # cHl333
+set smeft 116 0 # cHe22
+set smeft 117 0 # cHe33
+set smeft 119 0 # cll2222
+set smeft 123 1 # cll2233
+set smeft 124 0 # cll1221
+set smeft 126 0 # cll2332
+set smeft 140 0 # cee2222
+set smeft 144 0 # cee2233
+set smeft 176 0 # cle2222
+set smeft 180 0 # cle2233
+set smeft 183 0 # cle3322
+set smeft 186 0 # cle2332
+
+
+launch --rwgt_name=cHl333
+set smeft 2 0 # cHDD
+set smeft 9 0 # cHWB
+set smeft 110 0 # cHl122
+set smeft 111 0 # cHl133
+set smeft 112 0 # cHl311
+set smeft 113 0 # cHl322
+set smeft 114 1 # cHl333
+set smeft 116 0 # cHe22
+set smeft 117 0 # cHe33
+set smeft 119 0 # cll2222
+set smeft 123 0 # cll2233
+set smeft 124 0 # cll1221
+set smeft 126 0 # cll2332
+set smeft 140 0 # cee2222
+set smeft 144 0 # cee2233
+set smeft 176 0 # cle2222
+set smeft 180 0 # cle2233
+set smeft 183 0 # cle3322
+set smeft 186 0 # cle2332
+
+
+[etc for the other operators]
+-------------------
+
+
+
+this creates a weight per operator, with each set to 1, that is added to the original lhe file.
+
+alternatively, one could also use interaction order here. in this case a reweight card would be
+
+-------------------
+change model SMEFTsim_top_alphaScheme_UFO-Zmmtt
+change process z > mu+ mu- ta+ ta- NP=1 NP^2==1 NPcll^2==1 SMHLOOP=0 NPprop=0
+
+launch --rwgt_name=cll2233
+set smeft 119 0 # cll2222
+set smeft 123 1 # cll2233
+
+-------------------
+
+
+where only the parameters with order NPcll need to be specified.
+the problem with this syntax is that change process and change model can only be used once in each reweight.
+so to cover all operators one has to run many reweights in sequence (not in parallel cause they all write on the same lhe)
+
+
+
+
+
