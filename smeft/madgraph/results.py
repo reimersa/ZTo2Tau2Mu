@@ -125,13 +125,14 @@ def main():
             l_obs, l_exp, l_68_low, l_68_high, l_95_low, l_95_high = get_limits_vs_cl(a=a, b=b, proc_affected=proc_affected, order=order, r_sm=r_sm, acc_int=None, acc_sm=None, acc_bsm=None, options='')
             plot_limits_vs_cl(op=op, order=order, l_obs=l_obs, l_exp=l_exp, l_68_low=l_68_low, l_68_high=l_68_high, l_95_low=l_95_low, l_95_high=l_95_high, plottag='')
 
-            # l_withacc_obs, l_withacc_exp, l_withacc_68_low, l_withacc_68_high, l_withacc_95_low, l_withacc_95_high = get_limits_vs_cl(a=a, b=b, proc_affected=proc_affected, order=order, r_sm=r_sm, acc_int=acc_int, acc_sm=acc_sm, acc_bsm=acc_bsm, options='a')
-            # plot_limits_vs_cl(op=op, order=order, l_obs=l_withacc_obs, l_exp=l_withacc_exp, l_68_low=l_withacc_68_low, l_68_high=l_withacc_68_high, l_95_low=l_withacc_95_low, l_95_high=l_withacc_95_high, plottag='withacc')
+            l_withacc_obs, l_withacc_exp, l_withacc_68_low, l_withacc_68_high, l_withacc_95_low, l_withacc_95_high = get_limits_vs_cl(a=a, b=b, proc_affected=proc_affected, order=order, r_sm=r_sm, acc_int=acc_int, acc_sm=acc_sm, acc_bsm=acc_bsm, options='a')
+            plot_limits_vs_cl(op=op, order=order, l_obs=l_withacc_obs, l_exp=l_withacc_exp, l_68_low=l_withacc_68_low, l_68_high=l_withacc_68_high, l_95_low=l_withacc_95_low, l_95_high=l_withacc_95_high, plottag='withacc')
 
-            if order == 'comb': continue
-            # print 'operator %s -- a:' % (op), a, '-- ainc:', ainc
-            l_withf_obs, l_withf_exp, l_withf_68_low, l_withf_68_high, l_withf_95_low, l_withf_95_high = get_limits_vs_cl(a=a, b=b, proc_affected=proc_affected, order=order, r_sm=r_sm, acc_int=None, acc_sm=None, acc_bsm=None, ainc=ainc, options='f')
+            l_withf_obs, l_withf_exp, l_withf_68_low, l_withf_68_high, l_withf_95_low, l_withf_95_high = get_limits_vs_cl(a=a, b=b, proc_affected=proc_affected, order=order, r_sm=r_sm, acc_int=None, acc_sm=None, acc_bsm=None, ainc=ainc, binc=binc, options='f')
             plot_limits_vs_cl(op=op, order=order, l_obs=l_withf_obs, l_exp=l_withf_exp, l_68_low=l_withf_68_low, l_68_high=l_withf_68_high, l_95_low=l_withf_95_low, l_95_high=l_withf_95_high, plottag='withf')
+
+            l_withacc_withf_obs, l_withacc_withf_exp, l_withacc_withf_68_low, l_withacc_withf_68_high, l_withacc_withf_95_low, l_withacc_withf_95_high = get_limits_vs_cl(a=a, b=b, proc_affected=proc_affected, order=order, r_sm=r_sm, acc_int=acc_int, acc_sm=acc_sm, acc_bsm=acc_bsm, ainc=ainc, binc=binc, options='af')
+            plot_limits_vs_cl(op=op, order=order, l_obs=l_withacc_withf_obs, l_exp=l_withacc_withf_exp, l_68_low=l_withacc_withf_68_low, l_68_high=l_withacc_withf_68_high, l_95_low=l_withacc_withf_95_low, l_95_high=l_withacc_withf_95_high, plottag='withacc_withf')
 
     # ['cll2233', 'cll2332', 'cle2233', 'cle3322', 'cle2332', 'cee2233']
     plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cll2332')
@@ -150,9 +151,53 @@ def main():
     plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle3322', opy='cee2233')
     plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2332', opy='cee2233')
 
-    # plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cle2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
-    # plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cee2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
-    # plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2233', opy='cee2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cll2332', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cle2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cle3322', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cle2332', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cee2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2332', opy='cle2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2332', opy='cle3322', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2332', opy='cle2332', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2332', opy='cee2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2233', opy='cle3322', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2233', opy='cle2332', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2233', opy='cee2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle3322', opy='cle2332', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle3322', opy='cee2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2332', opy='cee2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cll2332', aincs_per_operator=aincs_per_operator, options='f')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cle2233', aincs_per_operator=aincs_per_operator, options='f')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cle3322', aincs_per_operator=aincs_per_operator, options='f')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cle2332', aincs_per_operator=aincs_per_operator, options='f')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cee2233', aincs_per_operator=aincs_per_operator, options='f')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2332', opy='cle2233', aincs_per_operator=aincs_per_operator, options='f')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2332', opy='cle3322', aincs_per_operator=aincs_per_operator, options='f')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2332', opy='cle2332', aincs_per_operator=aincs_per_operator, options='f')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2332', opy='cee2233', aincs_per_operator=aincs_per_operator, options='f')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2233', opy='cle3322', aincs_per_operator=aincs_per_operator, options='f')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2233', opy='cle2332', aincs_per_operator=aincs_per_operator, options='f')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2233', opy='cee2233', aincs_per_operator=aincs_per_operator, options='f')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle3322', opy='cle2332', aincs_per_operator=aincs_per_operator, options='f')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle3322', opy='cee2233', aincs_per_operator=aincs_per_operator, options='f')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2332', opy='cee2233', aincs_per_operator=aincs_per_operator, options='f')
+
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cll2332', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, options='af')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cle2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, options='af')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cle3322', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, options='af')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cle2332', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, options='af')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cee2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, options='af')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2332', opy='cle2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, options='af')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2332', opy='cle3322', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, options='af')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2332', opy='cle2332', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, options='af')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2332', opy='cee2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, options='af')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2233', opy='cle3322', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, options='af')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2233', opy='cle2332', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, options='af')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2233', opy='cee2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, options='af')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle3322', opy='cle2332', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, options='af')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle3322', opy='cee2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, options='af')
+    plot_limits_2d_interference(as_per_operator=as_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2332', opy='cee2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, options='af')
 
 
     plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cll2332')
@@ -170,25 +215,61 @@ def main():
     plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle3322', opy='cle2332')
     plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle3322', opy='cee2233')
     plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2332', opy='cee2233')
-    # plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cll2222')
-    # plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cle2222')
-    # plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cee2222')
-    # plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2233', opy='cll2222')
-    # plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2233', opy='cle2222')
-    # plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2233', opy='cee2222')
-    # plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cee2233', opy='cll2222')
-    # plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cee2233', opy='cle2222')
-    # plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cee2233', opy='cee2222')
-    # plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cle2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
-    # plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cee2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
-    # plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2233', opy='cee2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cll2332', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cle2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cle3322', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cle2332', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cee2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2332', opy='cle2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2332', opy='cle3322', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2332', opy='cle2332', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2332', opy='cee2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2233', opy='cle3322', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2233', opy='cle2332', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2233', opy='cee2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle3322', opy='cle2332', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle3322', opy='cee2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2332', opy='cee2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, options='a')
+
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cll2332', aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='f')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cle2233', aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='f')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cle3322', aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='f')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cle2332', aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='f')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cee2233', aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='f')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2332', opy='cle2233', aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='f')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2332', opy='cle3322', aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='f')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2332', opy='cle2332', aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='f')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2332', opy='cee2233', aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='f')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2233', opy='cle3322', aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='f')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2233', opy='cle2332', aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='f')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2233', opy='cee2233', aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='f')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle3322', opy='cle2332', aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='f')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle3322', opy='cee2233', aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='f')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2332', opy='cee2233', aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='f')
+
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cll2332', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='af')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cle2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='af')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cle3322', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='af')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cle2332', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='af')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2233', opy='cee2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='af')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2332', opy='cle2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='af')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2332', opy='cle3322', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='af')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2332', opy='cle2332', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='af')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cll2332', opy='cee2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='af')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2233', opy='cle3322', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='af')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2233', opy='cle2332', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='af')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2233', opy='cee2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='af')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle3322', opy='cle2332', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='af')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle3322', opy='cee2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='af')
+    plot_limits_2d_comb(as_per_operator=as_per_operator, bs_per_operator=bs_per_operator, proc_affected_per_operator=proc_affected_per_operator, opx='cle2332', opy='cee2233', acceptances_int_per_operator=acceptances_int_per_operator, acceptances_bsm_per_operator=acceptances_bsm_per_operator, acceptances_sm_per_operator=acceptances_sm_per_operator, aincs_per_operator=aincs_per_operator, bincs_per_operator=bincs_per_operator, options='af')
 
 
 
 
 
 
-def plot_limits_2d_comb(as_per_operator, bs_per_operator, proc_affected_per_operator, opx, opy, acceptances_int_per_operator=None, acceptances_bsm_per_operator=None, acceptances_sm_per_operator=None, options=''):
+def plot_limits_2d_comb(as_per_operator, bs_per_operator, proc_affected_per_operator, opx, opy, acceptances_int_per_operator=None, acceptances_bsm_per_operator=None, acceptances_sm_per_operator=None, aincs_per_operator=None, bincs_per_operator=None, options=''):
     # if not '2233' in opx:
     #     raise ValueError('a non-2233 operator on the x-axis is not supported.')
     
@@ -210,7 +291,7 @@ def plot_limits_2d_comb(as_per_operator, bs_per_operator, proc_affected_per_oper
         # print 'y coefficient by =', by
         # print 'interference coefficient c =', c
         
-        if options == 'a':
+        if options == 'a' or options == 'af':
             # also get mixed acceptance in a similar way
             acc_int_x = acceptances_int_per_operator[opx]
             acc_int_y = acceptances_int_per_operator[opy]
@@ -225,10 +306,22 @@ def plot_limits_2d_comb(as_per_operator, bs_per_operator, proc_affected_per_oper
             else: 
                 raise ValueError('Trying to find combined operator %s (or swapped: %s) in list of acceptances, but it is not in. Need to skip this combination of operators?' % (operatorname_sum, '%s+1p0x%s' % (opy, opx)))
             acc_bsm_intpart = get_acc_bsm_intpart(bx=bx, by=by, c=c, accx=acc_bsm_x, accy=acc_bsm_y, acctot=acc_bsm_withint)
-            # print 'acc bsm x:', acc_bsm_x
-            # print 'acc bsm y:', acc_bsm_y
-            # print 'acc bsm x+y int:', acc_bsm_withint
-            # print 'acc bsm intpart:', acc_bsm_intpart
+
+    if options == 'f' or options == 'af':
+        if None in [aincs_per_operator, bincs_per_operator]: raise ValueError('When running plot_limits_2d_comb with option \'f\', the aincs and bincs must not be None.')
+        aincx = aincs_per_operator[opx]
+        aincy = aincs_per_operator[opy]
+        bincx = bincs_per_operator[opx]
+        bincy = bincs_per_operator[opy]
+        if not operatorname_sum in bincs_per_operator:
+            cinc = 0
+        else:
+            sumcoeffinc  = bincs_per_operator[operatorname_sum]
+            cinc = sumcoeffinc - bincx - bincy
+
+            print 'x coefficient bincx =', bincx
+            print 'y coefficient bincy =', bincy
+            print 'interference coefficient cinc =', cinc
 
     # c *= 1000
 
@@ -271,6 +364,35 @@ def plot_limits_2d_comb(as_per_operator, bs_per_operator, proc_affected_per_oper
         equation = sp.Eq( (1+ax*x + ay*yvar + bx*x**2 + by*yvar**2 + c*x*yvar) / ((ax*x)/(1 + ax*x + ay*yvar + bx*x**2 + by*yvar**2 + c*x*yvar)*acrintx + (ay*yvar)/(1 + ax*x + ay*yvar + bx*x**2 + by*yvar**2 + c*x*yvar)*acrinty + (bx*x**2)/(1 + ax*x + ay*yvar + bx*x**2 + by*yvar**2 + c*x*yvar)*acrbsmx + (by*yvar**2)/(1 + ax*x + ay*yvar + bx*x**2 + by*yvar**2 + c*x*yvar)*acrbsmy + (c*x*yvar)/(1 + ax*x + ay*yvar + bx*x**2 + by*yvar**2 + c*x*yvar)*acrbsmintpart), r)
         result = list(sp.solveset(equation, yvar, domain=sp.S.Reals))
         # if result != []: print 'solutions for x = %f:'%(x), result
+        if len(result) == 0:
+            # print 'No real solution, returning None'
+            return None
+        return result
+
+    def get_limit_y_for_limit_x_numnum_withint_withf(x, ax, bx, ay, by, c, aincx, bincx, aincy, bincy, cinc, limit):
+
+        r = limit/r_sm
+
+        equation = sp.Eq( (1 + ax*x + ay*yvar + bx*x**2 + by*yvar**2 + c*x*yvar)**2/(1 + aincx*x + aincy*yvar + bincx*x**2 + bincy*yvar**2 + cinc*x*yvar), r)
+        result = list(sp.solveset(equation, yvar, domain=sp.S.Reals))
+        if len(result) == 0:
+            # print 'No real solution, returning None'
+            return None
+        return result
+
+    def get_limit_y_for_limit_x_numnum_withint_withacc_withf(x, ax, bx, ay, by, c, aincx, bincx, aincy, bincy, cinc, acc_int_x, acc_int_y, acc_bsm_x, acc_bsm_y, acc_bsm_intpart, acc_sm_x, acc_sm_y, limit):
+        if not acc_sm_x == acc_sm_y: raise ValueError('SM acceptances for the same process are different.')
+        acc_sm = acc_sm_x
+
+        r = limit/r_sm
+        acrintx = acc_int_x / acc_sm
+        acrinty = acc_int_y / acc_sm
+        acrbsmx = acc_bsm_x / acc_sm
+        acrbsmy = acc_bsm_y / acc_sm
+        acrbsmintpart = acc_bsm_intpart / acc_sm
+
+        equation = sp.Eq( (1 + ax*x + ay*yvar + bx*x**2 + by*yvar**2 + c*x*yvar)**2/(1 + aincx*x + aincy*yvar + bincx*x**2 + bincy*yvar**2 + cinc*x*yvar) / ((ax*x)/(1 + ax*x + ay*yvar + bx*x**2 + by*yvar**2 + c*x*yvar)*acrintx + (ay*yvar)/(1 + ax*x + ay*yvar + bx*x**2 + by*yvar**2 + c*x*yvar)*acrinty + (bx*x**2)/(1 + ax*x + ay*yvar + bx*x**2 + by*yvar**2 + c*x*yvar)*acrbsmx + (by*yvar**2)/(1 + ax*x + ay*yvar + bx*x**2 + by*yvar**2 + c*x*yvar)*acrbsmy + (c*x*yvar)/(1 + ax*x + ay*yvar + bx*x**2 + by*yvar**2 + c*x*yvar)*acrbsmintpart), r)
+        result = list(sp.solveset(equation, yvar, domain=sp.S.Reals))
         if len(result) == 0:
             # print 'No real solution, returning None'
             return None
@@ -371,48 +493,48 @@ def plot_limits_2d_comb(as_per_operator, bs_per_operator, proc_affected_per_oper
             y_low_95_nn  = [get_limit_y_for_limit_x_numnum_withint(x, ax, bx, ay, by, c, limits_r[4])[1] for x in x_low_95_n  ]
             y_high_95_nn = [get_limit_y_for_limit_x_numnum_withint(x, ax, bx, ay, by, c, limits_r[5])[1] for x in x_high_95_n ]
     
-        else: # num and denom
-            x_obs_p     = slim_list(lst=[x for x in range(50000) if (4*by*(ax*x + bx*x**2 - limits_r[0]/r_sm + 1) + ay**2*limits_r[0]/r_sm)/(limits_r[0]/r_sm) > 0], keep_every=100)
-            x_exp_p     = slim_list(lst=[x for x in range(50000) if (4*by*(ax*x + bx*x**2 - limits_r[1]/r_sm + 1) + ay**2*limits_r[1]/r_sm)/(limits_r[1]/r_sm) > 0], keep_every=100)
-            x_low_68_p  = slim_list(lst=[x for x in range(50000) if (4*by*(ax*x + bx*x**2 - limits_r[2]/r_sm + 1) + ay**2*limits_r[2]/r_sm)/(limits_r[2]/r_sm) > 0], keep_every=100)
-            x_high_68_p = slim_list(lst=[x for x in range(50000) if (4*by*(ax*x + bx*x**2 - limits_r[3]/r_sm + 1) + ay**2*limits_r[3]/r_sm)/(limits_r[3]/r_sm) > 0], keep_every=100)
-            x_low_95_p  = slim_list(lst=[x for x in range(50000) if (4*by*(ax*x + bx*x**2 - limits_r[4]/r_sm + 1) + ay**2*limits_r[4]/r_sm)/(limits_r[4]/r_sm) > 0], keep_every=100)
-            x_high_95_p = slim_list(lst=[x for x in range(50000) if (4*by*(ax*x + bx*x**2 - limits_r[5]/r_sm + 1) + ay**2*limits_r[5]/r_sm)/(limits_r[5]/r_sm) > 0], keep_every=100)
+        # else: # num and denom
+        #     x_obs_p     = slim_list(lst=[x for x in range(50000) if (4*by*(ax*x + bx*x**2 - limits_r[0]/r_sm + 1) + ay**2*limits_r[0]/r_sm)/(limits_r[0]/r_sm) > 0], keep_every=100)
+        #     x_exp_p     = slim_list(lst=[x for x in range(50000) if (4*by*(ax*x + bx*x**2 - limits_r[1]/r_sm + 1) + ay**2*limits_r[1]/r_sm)/(limits_r[1]/r_sm) > 0], keep_every=100)
+        #     x_low_68_p  = slim_list(lst=[x for x in range(50000) if (4*by*(ax*x + bx*x**2 - limits_r[2]/r_sm + 1) + ay**2*limits_r[2]/r_sm)/(limits_r[2]/r_sm) > 0], keep_every=100)
+        #     x_high_68_p = slim_list(lst=[x for x in range(50000) if (4*by*(ax*x + bx*x**2 - limits_r[3]/r_sm + 1) + ay**2*limits_r[3]/r_sm)/(limits_r[3]/r_sm) > 0], keep_every=100)
+        #     x_low_95_p  = slim_list(lst=[x for x in range(50000) if (4*by*(ax*x + bx*x**2 - limits_r[4]/r_sm + 1) + ay**2*limits_r[4]/r_sm)/(limits_r[4]/r_sm) > 0], keep_every=100)
+        #     x_high_95_p = slim_list(lst=[x for x in range(50000) if (4*by*(ax*x + bx*x**2 - limits_r[5]/r_sm + 1) + ay**2*limits_r[5]/r_sm)/(limits_r[5]/r_sm) > 0], keep_every=100)
         
-            x_obs_n     = slim_list(lst=[-x for x in range(50000) if (4*by*(ax*(-x) + bx*x**2 - limits_r[0]/r_sm + 1) + ay**2*limits_r[0]/r_sm)/(limits_r[0]/r_sm) > 0], keep_every=100)
-            x_exp_n     = slim_list(lst=[-x for x in range(50000) if (4*by*(ax*(-x) + bx*x**2 - limits_r[1]/r_sm + 1) + ay**2*limits_r[1]/r_sm)/(limits_r[1]/r_sm) > 0], keep_every=100)
-            x_low_68_n  = slim_list(lst=[-x for x in range(50000) if (4*by*(ax*(-x) + bx*x**2 - limits_r[2]/r_sm + 1) + ay**2*limits_r[2]/r_sm)/(limits_r[2]/r_sm) > 0], keep_every=100)
-            x_high_68_n = slim_list(lst=[-x for x in range(50000) if (4*by*(ax*(-x) + bx*x**2 - limits_r[3]/r_sm + 1) + ay**2*limits_r[3]/r_sm)/(limits_r[3]/r_sm) > 0], keep_every=100)
-            x_low_95_n  = slim_list(lst=[-x for x in range(50000) if (4*by*(ax*(-x) + bx*x**2 - limits_r[4]/r_sm + 1) + ay**2*limits_r[4]/r_sm)/(limits_r[4]/r_sm) > 0], keep_every=100)
-            x_high_95_n = slim_list(lst=[-x for x in range(50000) if (4*by*(ax*(-x) + bx*x**2 - limits_r[5]/r_sm + 1) + ay**2*limits_r[5]/r_sm)/(limits_r[5]/r_sm) > 0], keep_every=100)
+        #     x_obs_n     = slim_list(lst=[-x for x in range(50000) if (4*by*(ax*(-x) + bx*x**2 - limits_r[0]/r_sm + 1) + ay**2*limits_r[0]/r_sm)/(limits_r[0]/r_sm) > 0], keep_every=100)
+        #     x_exp_n     = slim_list(lst=[-x for x in range(50000) if (4*by*(ax*(-x) + bx*x**2 - limits_r[1]/r_sm + 1) + ay**2*limits_r[1]/r_sm)/(limits_r[1]/r_sm) > 0], keep_every=100)
+        #     x_low_68_n  = slim_list(lst=[-x for x in range(50000) if (4*by*(ax*(-x) + bx*x**2 - limits_r[2]/r_sm + 1) + ay**2*limits_r[2]/r_sm)/(limits_r[2]/r_sm) > 0], keep_every=100)
+        #     x_high_68_n = slim_list(lst=[-x for x in range(50000) if (4*by*(ax*(-x) + bx*x**2 - limits_r[3]/r_sm + 1) + ay**2*limits_r[3]/r_sm)/(limits_r[3]/r_sm) > 0], keep_every=100)
+        #     x_low_95_n  = slim_list(lst=[-x for x in range(50000) if (4*by*(ax*(-x) + bx*x**2 - limits_r[4]/r_sm + 1) + ay**2*limits_r[4]/r_sm)/(limits_r[4]/r_sm) > 0], keep_every=100)
+        #     x_high_95_n = slim_list(lst=[-x for x in range(50000) if (4*by*(ax*(-x) + bx*x**2 - limits_r[5]/r_sm + 1) + ay**2*limits_r[5]/r_sm)/(limits_r[5]/r_sm) > 0], keep_every=100)
         
-            y_obs_pp     = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[0])[0] for x in x_obs_p     ]
-            y_exp_pp     = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[1])[0] for x in x_exp_p     ]
-            y_low_68_pp  = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[2])[0] for x in x_low_68_p  ]
-            y_high_68_pp = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[3])[0] for x in x_high_68_p ]
-            y_low_95_pp  = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[4])[0] for x in x_low_95_p  ]
-            y_high_95_pp = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[5])[0] for x in x_high_95_p ]
+        #     y_obs_pp     = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[0])[0] for x in x_obs_p     ]
+        #     y_exp_pp     = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[1])[0] for x in x_exp_p     ]
+        #     y_low_68_pp  = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[2])[0] for x in x_low_68_p  ]
+        #     y_high_68_pp = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[3])[0] for x in x_high_68_p ]
+        #     y_low_95_pp  = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[4])[0] for x in x_low_95_p  ]
+        #     y_high_95_pp = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[5])[0] for x in x_high_95_p ]
         
-            y_obs_pn     = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[0])[1] for x in x_obs_p     ]
-            y_exp_pn     = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[1])[1] for x in x_exp_p     ]
-            y_low_68_pn  = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[2])[1] for x in x_low_68_p  ]
-            y_high_68_pn = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[3])[1] for x in x_high_68_p ]
-            y_low_95_pn  = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[4])[1] for x in x_low_95_p  ]
-            y_high_95_pn = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[5])[1] for x in x_high_95_p ]
+        #     y_obs_pn     = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[0])[1] for x in x_obs_p     ]
+        #     y_exp_pn     = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[1])[1] for x in x_exp_p     ]
+        #     y_low_68_pn  = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[2])[1] for x in x_low_68_p  ]
+        #     y_high_68_pn = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[3])[1] for x in x_high_68_p ]
+        #     y_low_95_pn  = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[4])[1] for x in x_low_95_p  ]
+        #     y_high_95_pn = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[5])[1] for x in x_high_95_p ]
         
-            y_obs_np     = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[0])[0] for x in x_obs_n     ]
-            y_exp_np     = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[1])[0] for x in x_exp_n     ]
-            y_low_68_np  = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[2])[0] for x in x_low_68_n  ]
-            y_high_68_np = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[3])[0] for x in x_high_68_n ]
-            y_low_95_np  = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[4])[0] for x in x_low_95_n  ]
-            y_high_95_np = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[5])[0] for x in x_high_95_n ]
+        #     y_obs_np     = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[0])[0] for x in x_obs_n     ]
+        #     y_exp_np     = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[1])[0] for x in x_exp_n     ]
+        #     y_low_68_np  = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[2])[0] for x in x_low_68_n  ]
+        #     y_high_68_np = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[3])[0] for x in x_high_68_n ]
+        #     y_low_95_np  = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[4])[0] for x in x_low_95_n  ]
+        #     y_high_95_np = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[5])[0] for x in x_high_95_n ]
         
-            y_obs_nn     = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[0])[1] for x in x_obs_n     ]
-            y_exp_nn     = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[1])[1] for x in x_exp_n     ]
-            y_low_68_nn  = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[2])[1] for x in x_low_68_n  ]
-            y_high_68_nn = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[3])[1] for x in x_high_68_n ]
-            y_low_95_nn  = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[4])[1] for x in x_low_95_n  ]
-            y_high_95_nn = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[5])[1] for x in x_high_95_n ]  
+        #     y_obs_nn     = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[0])[1] for x in x_obs_n     ]
+        #     y_exp_nn     = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[1])[1] for x in x_exp_n     ]
+        #     y_low_68_nn  = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[2])[1] for x in x_low_68_n  ]
+        #     y_high_68_nn = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[3])[1] for x in x_high_68_n ]
+        #     y_low_95_nn  = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[4])[1] for x in x_low_95_n  ]
+        #     y_high_95_nn = [get_limit_y_for_limit_x_numden(x, ax, bx, ay, by, limits_r[5])[1] for x in x_high_95_n ]  
 
     elif options == 'a':
         if proc_affected_per_operator[opx] == 'zmmmm' or proc_affected_per_operator[opy] == 'zmmmm': raise ValueError('For 2d comb limits with acceptance, one of the two operators affects zmmmm, we do not do that...')
@@ -446,6 +568,74 @@ def plot_limits_2d_comb(as_per_operator, bs_per_operator, proc_affected_per_oper
         y_low_95_n = [get_limit_y_for_limit_x_numnum_withint_withacc(x, ax, bx, ay, by, c, acc_int_x, acc_int_y, acc_bsm_x, acc_bsm_y, acc_bsm_intpart, acc_sm_x, acc_sm_y, limits_r[4]) for x in x_low_95_n ]
         y_high_95_p = [get_limit_y_for_limit_x_numnum_withint_withacc(x, ax, bx, ay, by, c, acc_int_x, acc_int_y, acc_bsm_x, acc_bsm_y, acc_bsm_intpart, acc_sm_x, acc_sm_y, limits_r[5]) for x in x_high_95_p ]
         y_high_95_n = [get_limit_y_for_limit_x_numnum_withint_withacc(x, ax, bx, ay, by, c, acc_int_x, acc_int_y, acc_bsm_x, acc_bsm_y, acc_bsm_intpart, acc_sm_x, acc_sm_y, limits_r[5]) for x in x_high_95_n ]
+
+
+    elif options == 'f':
+        if proc_affected_per_operator[opx] == 'zmmmm' or proc_affected_per_operator[opy] == 'zmmmm': raise ValueError('For 2d comb limits with f, one of the two operators affects zmmmm, we do not do that...')
+        if c == 0 or cinc == 0: raise ValueError('Somehow there is no interference between the two operators in the quadratic case that affects the ttmm both times (either the zttmm nor the incttmm process) there should...')
+
+        if None in [aincs_per_operator, bincs_per_operator]: raise ValueError('When running plot_limits_2d_comb with option \'f\', the aincs and bincs must none be None.')
+         
+        x_obs_p     = slim_list(lst=[x for x in range(20000)], keep_every=100)
+        x_exp_p     = slim_list(lst=[x for x in range(20000)], keep_every=100)
+        x_low_68_p  = slim_list(lst=[x for x in range(20000)], keep_every=100)
+        x_high_68_p = slim_list(lst=[x for x in range(20000)], keep_every=100)
+        x_low_95_p  = slim_list(lst=[x for x in range(20000)], keep_every=100)
+        x_high_95_p = slim_list(lst=[x for x in range(20000)], keep_every=100)   
+
+        x_obs_n     = slim_list(lst=[-x for x in range(20000)], keep_every=100)
+        x_exp_n     = slim_list(lst=[-x for x in range(20000)], keep_every=100)
+        x_low_68_n  = slim_list(lst=[-x for x in range(20000)], keep_every=100)
+        x_high_68_n = slim_list(lst=[-x for x in range(20000)], keep_every=100)
+        x_low_95_n  = slim_list(lst=[-x for x in range(20000)], keep_every=100)
+        x_high_95_n = slim_list(lst=[-x for x in range(20000)], keep_every=100)    
+
+        y_obs_p = [get_limit_y_for_limit_x_numnum_withint_withf(x, ax, bx, ay, by, c, aincx, bincx, aincy, bincy, cinc, limits_r[0]) for x in x_obs_p ]
+        y_obs_n = [get_limit_y_for_limit_x_numnum_withint_withf(x, ax, bx, ay, by, c, aincx, bincx, aincy, bincy, cinc, limits_r[0]) for x in x_obs_n ]
+        y_exp_p = [get_limit_y_for_limit_x_numnum_withint_withf(x, ax, bx, ay, by, c, aincx, bincx, aincy, bincy, cinc, limits_r[1]) for x in x_exp_p ]
+        y_exp_n = [get_limit_y_for_limit_x_numnum_withint_withf(x, ax, bx, ay, by, c, aincx, bincx, aincy, bincy, cinc, limits_r[1]) for x in x_exp_n ]
+        y_low_68_p = [get_limit_y_for_limit_x_numnum_withint_withf(x, ax, bx, ay, by, c, aincx, bincx, aincy, bincy, cinc, limits_r[2]) for x in x_low_68_p ]
+        y_low_68_n = [get_limit_y_for_limit_x_numnum_withint_withf(x, ax, bx, ay, by, c, aincx, bincx, aincy, bincy, cinc, limits_r[2]) for x in x_low_68_n ]
+        y_high_68_p = [get_limit_y_for_limit_x_numnum_withint_withf(x, ax, bx, ay, by, c, aincx, bincx, aincy, bincy, cinc, limits_r[3]) for x in x_high_68_p ]
+        y_high_68_n = [get_limit_y_for_limit_x_numnum_withint_withf(x, ax, bx, ay, by, c, aincx, bincx, aincy, bincy, cinc, limits_r[3]) for x in x_high_68_n ]
+        y_low_95_p = [get_limit_y_for_limit_x_numnum_withint_withf(x, ax, bx, ay, by, c, aincx, bincx, aincy, bincy, cinc, limits_r[4]) for x in x_low_95_p ]
+        y_low_95_n = [get_limit_y_for_limit_x_numnum_withint_withf(x, ax, bx, ay, by, c, aincx, bincx, aincy, bincy, cinc, limits_r[4]) for x in x_low_95_n ]
+        y_high_95_p = [get_limit_y_for_limit_x_numnum_withint_withf(x, ax, bx, ay, by, c, aincx, bincx, aincy, bincy, cinc, limits_r[5]) for x in x_high_95_p ]
+        y_high_95_n = [get_limit_y_for_limit_x_numnum_withint_withf(x, ax, bx, ay, by, c, aincx, bincx, aincy, bincy, cinc, limits_r[5]) for x in x_high_95_n ]
+
+
+    elif options == 'af':
+        if proc_affected_per_operator[opx] == 'zmmmm' or proc_affected_per_operator[opy] == 'zmmmm': raise ValueError('For 2d comb limits with f, one of the two operators affects zmmmm, we do not do that...')
+        if c == 0 or cinc == 0: raise ValueError('Somehow there is no interference between the two operators in the quadratic case that affects the ttmm both times (either the zttmm nor the incttmm process) there should...')
+
+        if None in [aincs_per_operator, bincs_per_operator, acceptances_int_per_operator, acceptances_bsm_per_operator, acceptances_sm_per_operator]: raise ValueError('When running plot_limits_2d_comb with option \'af\', the aincs and bincs and all acceptances must not be None.')
+         
+        x_obs_p     = slim_list(lst=[x for x in range(20000)], keep_every=100)
+        x_exp_p     = slim_list(lst=[x for x in range(20000)], keep_every=100)
+        x_low_68_p  = slim_list(lst=[x for x in range(20000)], keep_every=100)
+        x_high_68_p = slim_list(lst=[x for x in range(20000)], keep_every=100)
+        x_low_95_p  = slim_list(lst=[x for x in range(20000)], keep_every=100)
+        x_high_95_p = slim_list(lst=[x for x in range(20000)], keep_every=100)   
+
+        x_obs_n     = slim_list(lst=[-x for x in range(20000)], keep_every=100)
+        x_exp_n     = slim_list(lst=[-x for x in range(20000)], keep_every=100)
+        x_low_68_n  = slim_list(lst=[-x for x in range(20000)], keep_every=100)
+        x_high_68_n = slim_list(lst=[-x for x in range(20000)], keep_every=100)
+        x_low_95_n  = slim_list(lst=[-x for x in range(20000)], keep_every=100)
+        x_high_95_n = slim_list(lst=[-x for x in range(20000)], keep_every=100)    
+
+        y_obs_p =     [get_limit_y_for_limit_x_numnum_withint_withacc_withf(x, ax, bx, ay, by, c, aincx, bincx, aincy, bincy, cinc, acc_int_x, acc_int_y, acc_bsm_x, acc_bsm_y, acc_bsm_intpart, acc_sm_x, acc_sm_y, limits_r[0]) for x in x_obs_p ]
+        y_obs_n =     [get_limit_y_for_limit_x_numnum_withint_withacc_withf(x, ax, bx, ay, by, c, aincx, bincx, aincy, bincy, cinc, acc_int_x, acc_int_y, acc_bsm_x, acc_bsm_y, acc_bsm_intpart, acc_sm_x, acc_sm_y, limits_r[0]) for x in x_obs_n ]
+        y_exp_p =     [get_limit_y_for_limit_x_numnum_withint_withacc_withf(x, ax, bx, ay, by, c, aincx, bincx, aincy, bincy, cinc, acc_int_x, acc_int_y, acc_bsm_x, acc_bsm_y, acc_bsm_intpart, acc_sm_x, acc_sm_y, limits_r[1]) for x in x_exp_p ]
+        y_exp_n =     [get_limit_y_for_limit_x_numnum_withint_withacc_withf(x, ax, bx, ay, by, c, aincx, bincx, aincy, bincy, cinc, acc_int_x, acc_int_y, acc_bsm_x, acc_bsm_y, acc_bsm_intpart, acc_sm_x, acc_sm_y, limits_r[1]) for x in x_exp_n ]
+        y_low_68_p =  [get_limit_y_for_limit_x_numnum_withint_withacc_withf(x, ax, bx, ay, by, c, aincx, bincx, aincy, bincy, cinc, acc_int_x, acc_int_y, acc_bsm_x, acc_bsm_y, acc_bsm_intpart, acc_sm_x, acc_sm_y, limits_r[2]) for x in x_low_68_p ]
+        y_low_68_n =  [get_limit_y_for_limit_x_numnum_withint_withacc_withf(x, ax, bx, ay, by, c, aincx, bincx, aincy, bincy, cinc, acc_int_x, acc_int_y, acc_bsm_x, acc_bsm_y, acc_bsm_intpart, acc_sm_x, acc_sm_y, limits_r[2]) for x in x_low_68_n ]
+        y_high_68_p = [get_limit_y_for_limit_x_numnum_withint_withacc_withf(x, ax, bx, ay, by, c, aincx, bincx, aincy, bincy, cinc, acc_int_x, acc_int_y, acc_bsm_x, acc_bsm_y, acc_bsm_intpart, acc_sm_x, acc_sm_y, limits_r[3]) for x in x_high_68_p ]
+        y_high_68_n = [get_limit_y_for_limit_x_numnum_withint_withacc_withf(x, ax, bx, ay, by, c, aincx, bincx, aincy, bincy, cinc, acc_int_x, acc_int_y, acc_bsm_x, acc_bsm_y, acc_bsm_intpart, acc_sm_x, acc_sm_y, limits_r[3]) for x in x_high_68_n ]
+        y_low_95_p =  [get_limit_y_for_limit_x_numnum_withint_withacc_withf(x, ax, bx, ay, by, c, aincx, bincx, aincy, bincy, cinc, acc_int_x, acc_int_y, acc_bsm_x, acc_bsm_y, acc_bsm_intpart, acc_sm_x, acc_sm_y, limits_r[4]) for x in x_low_95_p ]
+        y_low_95_n =  [get_limit_y_for_limit_x_numnum_withint_withacc_withf(x, ax, bx, ay, by, c, aincx, bincx, aincy, bincy, cinc, acc_int_x, acc_int_y, acc_bsm_x, acc_bsm_y, acc_bsm_intpart, acc_sm_x, acc_sm_y, limits_r[4]) for x in x_low_95_n ]
+        y_high_95_p = [get_limit_y_for_limit_x_numnum_withint_withacc_withf(x, ax, bx, ay, by, c, aincx, bincx, aincy, bincy, cinc, acc_int_x, acc_int_y, acc_bsm_x, acc_bsm_y, acc_bsm_intpart, acc_sm_x, acc_sm_y, limits_r[5]) for x in x_high_95_p ]
+        y_high_95_n = [get_limit_y_for_limit_x_numnum_withint_withacc_withf(x, ax, bx, ay, by, c, aincx, bincx, aincy, bincy, cinc, acc_int_x, acc_int_y, acc_bsm_x, acc_bsm_y, acc_bsm_intpart, acc_sm_x, acc_sm_y, limits_r[5]) for x in x_high_95_n ]
 
 
  
@@ -484,7 +674,7 @@ def plot_limits_2d_comb(as_per_operator, bs_per_operator, proc_affected_per_oper
             g_obs_n = ROOT.TGraph(len(y_obs_np+y_obs_nn), array('d', x_obs_n+x_obs_n[::-1]), array('d', y_obs_np+y_obs_nn[::-1])) 
             g_exp_n = ROOT.TGraph(len(y_exp_np+y_exp_nn), array('d', x_exp_n+x_exp_n[::-1]), array('d', y_exp_np+y_exp_nn[::-1])) 
         
-        elif options == 'a':
+        elif options == 'a' or options == 'f' or options == 'af':
             lwidth = +lwidth_base
 
             x_obs_pp = [x for (x, y)     in zip(x_obs_p, y_obs_p) if y is not None]
@@ -639,6 +829,8 @@ def plot_limits_2d_comb(as_per_operator, bs_per_operator, proc_affected_per_oper
     
     outname = os.path.join(plotfolder, 'Limits2d_%s_%s_vs_%s.pdf' % ('comb', opx, opy))
     if options == 'a': outname = outname.replace('comb', 'comb_withacc')
+    if options == 'f': outname = outname.replace('comb', 'comb_withf')
+    if options == 'af': outname = outname.replace('comb', 'comb_withacc_withf')
     c.SaveAs(outname)
 
     del c
@@ -663,7 +855,7 @@ def get_limits_r_at_cl(cl=0.95):
     return (interpolate_x_from_y(value_list=r_obs, target_y=1.-cl), interpolate_x_from_y(value_list=r_exp, target_y=1.-cl), interpolate_x_from_y(value_list=r_68_low, target_y=1.-cl), interpolate_x_from_y(value_list=r_68_high, target_y=1.-cl), interpolate_x_from_y(value_list=r_95_low, target_y=1.-cl), interpolate_x_from_y(value_list=r_95_high, target_y=1.-cl))
 
 
-def plot_limits_2d_interference(as_per_operator, proc_affected_per_operator, opx, opy, acceptances_int_per_operator=None, acceptances_sm_per_operator=None, options=''):
+def plot_limits_2d_interference(as_per_operator, proc_affected_per_operator, opx, opy, acceptances_int_per_operator=None, acceptances_sm_per_operator=None, aincs_per_operator=None, options=''):
     limits_r = get_limits_r_at_cl(cl=0.95)
     
 
@@ -681,6 +873,25 @@ def plot_limits_2d_interference(as_per_operator, proc_affected_per_operator, opx
         acry = acc_int_y / acc_sm_y
         result = (math.sqrt(4*ax*acrx*r*x - 4*acry*r*(ax*x+1) + acry**2*r**2 + 4*r) - 2*ax*x + acry*r - 2)/(2*ay)
         return result
+
+    def get_limit_y_for_limit_x_numnum_withf(x, ax, ay, aincx, aincy, limit):
+        r = limit/r_sm
+        equation = sp.Eq((1+ax*x+ay*yvar)**2/(1+aincx*x+aincy*yvar), r)
+        result = list(sp.solveset(equation, yvar, domain=sp.S.Reals))
+        if len(result) == 0:
+            return None
+        return result[-1]
+
+    def get_limit_y_for_limit_x_numnum_withacc_withf(x, ax, ay, aincx, aincy, acc_int_x, acc_int_y, acc_sm_x, acc_sm_y, limit):
+        r = limit/r_sm
+        acrx = acc_int_x / acc_sm_x
+        acry = acc_int_y / acc_sm_y
+        equation = sp.Eq((1+ax*x+ay*yvar)**2/(1+aincx*x+aincy*yvar) / (ax*x/(1+ax*x+ay*yvar)*acrx + ay*yvar/(1+ax*x+ay*yvar)*acry + 1 - (ax*x+ay*yvar)/(1+ax*x+ay*yvar)), r)
+        result = list(sp.solveset(equation, yvar, domain=sp.S.Reals))
+        print x, ':  ', result
+        if len(result) == 0:
+            return None
+        return result[-1]
 
     # easy analytic relation for limits, they will be a straight line
     ax = as_per_operator[opx]
@@ -715,6 +926,21 @@ def plot_limits_2d_interference(as_per_operator, proc_affected_per_operator, opx
             y_high_68 = [get_limit_y_for_limit_x_numden(x, ax, ay, limits_r[3]) for x in x_all]
             y_low_95  = [get_limit_y_for_limit_x_numden(x, ax, ay, limits_r[4]) for x in x_all]
             y_high_95 = [get_limit_y_for_limit_x_numden(x, ax, ay, limits_r[5]) for x in x_all]    
+    elif options == 'f':
+        if aincs_per_operator == None: raise ValueError('When running plot_limits_2d_interference with option \'f\', the aincs must not be None.')
+        aincx = aincs_per_operator[opx]
+        aincy = aincs_per_operator[opy]
+
+        if proc_affected_per_operator[opx] == 'zttmm' and proc_affected_per_operator[opy] == 'zttmm': # easy case, same as before
+            x_all     = slim_list(lst=[x for x in range(xmin, xmax)], keep_every=100)
+            y_obs     = [get_limit_y_for_limit_x_numnum_withf(x, ax, ay, aincx, aincy, limits_r[0]) for x in x_all]
+            y_exp     = [get_limit_y_for_limit_x_numnum_withf(x, ax, ay, aincx, aincy, limits_r[1]) for x in x_all]
+            y_low_68  = [get_limit_y_for_limit_x_numnum_withf(x, ax, ay, aincx, aincy, limits_r[2]) for x in x_all]
+            y_high_68 = [get_limit_y_for_limit_x_numnum_withf(x, ax, ay, aincx, aincy, limits_r[3]) for x in x_all]
+            y_low_95  = [get_limit_y_for_limit_x_numnum_withf(x, ax, ay, aincx, aincy, limits_r[4]) for x in x_all]
+            y_high_95 = [get_limit_y_for_limit_x_numnum_withf(x, ax, ay, aincx, aincy, limits_r[5]) for x in x_all]    
+        else:
+            raise ValueError('In 2-d limits (interference) with acceptance (option \'f\'), we only consider operators that affect zttmm, but this one affects zmmmm. Nah.')
     elif options == 'a':
         if None in [acceptances_int_per_operator, acceptances_sm_per_operator]: raise ValueError('When running plot_limits_2d_interference with option \'a\', the acceptances must none be None.')
         acc_int_x = acceptances_int_per_operator[opx]
@@ -732,6 +958,25 @@ def plot_limits_2d_interference(as_per_operator, proc_affected_per_operator, opx
             y_high_95 = [get_limit_y_for_limit_x_numnum_withacc(x, ax, ay, acc_int_x, acc_int_y, acc_sm_x, acc_sm_y, limits_r[5]) for x in x_all]    
         else:
             raise ValueError('In 2-d limits (interference) with acceptance (option \'a\'), we only consider operators that affect zttmm, but this one affects zmmmm. Nah.')
+    elif options == 'af':
+        if None in [acceptances_int_per_operator, acceptances_sm_per_operator, aincs_per_operator]: raise ValueError('When running plot_limits_2d_interference with option \'a\', the acceptances and aincs must none be None.')
+        acc_int_x = acceptances_int_per_operator[opx]
+        acc_int_y = acceptances_int_per_operator[opy]
+        acc_sm_x = acceptances_sm_per_operator[opx]
+        acc_sm_y = acceptances_sm_per_operator[opy]
+        aincx = aincs_per_operator[opx]
+        aincy = aincs_per_operator[opy]
+
+        if proc_affected_per_operator[opx] == 'zttmm' and proc_affected_per_operator[opy] == 'zttmm': # easy case, same as before
+            x_all     = slim_list(lst=[x for x in range(xmin, xmax)], keep_every=10000)
+            y_obs     = [get_limit_y_for_limit_x_numnum_withacc_withf(x, ax, ay, aincx, aincy, acc_int_x, acc_int_y, acc_sm_x, acc_sm_y, limits_r[0]) for x in x_all]
+            y_exp     = [get_limit_y_for_limit_x_numnum_withacc_withf(x, ax, ay, aincx, aincy, acc_int_x, acc_int_y, acc_sm_x, acc_sm_y, limits_r[1]) for x in x_all]
+            y_low_68  = [get_limit_y_for_limit_x_numnum_withacc_withf(x, ax, ay, aincx, aincy, acc_int_x, acc_int_y, acc_sm_x, acc_sm_y, limits_r[2]) for x in x_all]
+            y_high_68 = [get_limit_y_for_limit_x_numnum_withacc_withf(x, ax, ay, aincx, aincy, acc_int_x, acc_int_y, acc_sm_x, acc_sm_y, limits_r[3]) for x in x_all]
+            y_low_95  = [get_limit_y_for_limit_x_numnum_withacc_withf(x, ax, ay, aincx, aincy, acc_int_x, acc_int_y, acc_sm_x, acc_sm_y, limits_r[4]) for x in x_all]
+            y_high_95 = [get_limit_y_for_limit_x_numnum_withacc_withf(x, ax, ay, aincx, aincy, acc_int_x, acc_int_y, acc_sm_x, acc_sm_y, limits_r[5]) for x in x_all]    
+        else:
+            raise ValueError('In 2-d limits (interference) with acceptance (option \'f\'), we only consider operators that affect zttmm, but this one affects zmmmm. Nah.')
     else: raise ValueError('In 2-d limits (interference) computation, must either pass no option (\'\') or option \'a\'. Instead passed: %s' % (option))
 
     x_high_68 = copy.deepcopy(x_all)
@@ -802,6 +1047,8 @@ def plot_limits_2d_interference(as_per_operator, proc_affected_per_operator, opx
     
     outname = os.path.join(plotfolder, 'Limits2d_%s_%s_vs_%s.pdf' % ('interference', opx, opy))
     if options == 'a': outname = outname.replace('interference', 'interference_withacc')
+    if options == 'f': outname = outname.replace('interference', 'interference_withf')
+    if options == 'af': outname = outname.replace('interference', 'interference_withacc_withf')
     c.SaveAs(outname)
     del c
 
@@ -1021,6 +1268,16 @@ def get_limit_on_c_for_target_r(a, b, proc_affected, order, r_target, r_sm, acc_
                 raise ValueError('limits in the case of interference and with considering the acceptance effect on Z->4mu is not yet understood. Since the limits on C are generally negative, how does the acceptance change in this case? For positive interference it is easy, but for negative? Need to implement and think about, skip for now.')
             else:
                 raise ValueError('Affected process is neither \'zttmm\' nor \'zmmmm\', but instead illegal value: \'%s\'' % (proc_affected))
+        elif options == 'af':
+            if None in [acc_int, acc_sm, ainc]: raise ValueError('Option \'af\' for interference 1-d requires ainc and acc_int and acc_sm, currently one or more is None.')
+            if proc_affected == 'zttmm': # 
+                equation = sp.Eq((1+a*xvar)**2/(1+ainc*xvar) / ((a*xvar)/(1+a*xvar) * acc_int/acc_sm + 1 - (a*xvar)/(1+a*xvar)), r)
+                result = list(sp.solveset(equation, xvar, domain=sp.S.Reals))
+                if len(result) == 0:
+                    return None
+                return result[-1]
+            else:
+                raise ValueError('Only considering zttmm processes, please fix.')
 
         else: raise ValueError('option string must either be empty or \'a\', need to implement the rest.')
     elif order == 'comb':
@@ -1035,6 +1292,16 @@ def get_limit_on_c_for_target_r(a, b, proc_affected, order, r_target, r_sm, acc_
                 return ((math.sqrt((a*r)**2 - 4*b*(r)**2 + 4*b*r) - a*r)/(2*b*r))
             else: 
                 raise ValueError('Affected process is neither \'zttmm\' nor \'zmmmm\', but instead illegal value: \'%s\'' % (proc_affected))
+        elif options == 'f':
+            if None in [ainc, binc]: raise ValueError('Option \'f\' for comb 1-d requires ainc and binc, currently at least one of them is None.')
+            if proc_affected == 'zttmm': # formula: r/r = (1+aC+bC^2) * (1+aC+bC^2)/(1+ainc*C+binc*C^2)
+                equation = sp.Eq((1+a*xvar+b*xvar**2)**2/(1+ainc*xvar+binc*xvar**2), r)
+                result = list(sp.solveset(equation, xvar, domain=sp.S.Reals))
+                if len(result) == 0:
+                    return None
+                return result[-1]
+            else:
+                raise ValueError('Only considering zttmm processes, please fix.')
         elif options == 'a':
             if None in [acc_int, acc_bsm, acc_sm]: raise ValueError('Acceptances must not be None.')
             if proc_affected == 'zttmm': 
@@ -1047,6 +1314,16 @@ def get_limit_on_c_for_target_r(a, b, proc_affected, order, r_target, r_sm, acc_
                 raise ValueError('limits in the case of combined interference+pure and with considering the acceptance effect on Z->4mu is not yet understood. There won\'t be a limit on Z->4mu anyway, so better avoid this.')
             else:
                 raise ValueError('Affected process is neither \'zttmm\' nor \'zmmmm\', but instead illegal value: \'%s\'' % (proc_affected))
+        elif options == 'af':
+            if None in [acc_int, acc_sm, acc_bsm, ainc, binc]: raise ValueError('Option \'af\' for interference 1-d requires ainc, binc, acc_int, acc_bsm, and acc_sm, currently one or more is None.')
+            if proc_affected == 'zttmm': # 
+                equation = sp.Eq((1+a*xvar+b*xvar**2)**2/(1+ainc*xvar+binc*xvar**2) / ((a*xvar)/(1+a*xvar+b*xvar**2)*acc_int/acc_sm + (b*xvar**2)/(1+a*xvar+b*xvar**2)*acc_bsm/acc_sm + 1 - (a*xvar+b*xvar**2)/(1+a*xvar+b*xvar**2)), r)
+                result = list(sp.solveset(equation, xvar, domain=sp.S.Reals))
+                if len(result) == 0:
+                    return None
+                return result[-1]
+            else:
+                raise ValueError('Only considering zttmm processes, please fix.')
         else: raise ValueError('option string must either be empty (\'\') or \'a\', need to implement the rest.')
     raise ValueError('order %s not supported for limit calculation at the moment.' % (order))
 

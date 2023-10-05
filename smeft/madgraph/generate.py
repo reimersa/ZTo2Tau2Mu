@@ -37,8 +37,8 @@ parser.add_argument('-e', "--extract",     dest="extract", default=False, action
 #                                            help="produce n-tuples from LHE files" )
 parser.add_argument('-c', "--convert",     dest="convert", default=False, action='store_true',
                                            help="convert GENSIM to n-tuples." )
-# parser.add_argument('-p', "--plot",        dest="plot", default=False, action='store_true',
-#                                            help="plot distributions from n-tuples" )
+parser.add_argument('-p', "--plot",        dest="plot", default=False, action='store_true',
+                                           help="plot distributions from n-tuples" )
 args = parser.parse_args()
 if args.local and args.submit:
     raise ValueError('Both \'local\' and \'submit\' arguments used, please decide for one.')
@@ -75,8 +75,9 @@ operators += ['cle2332+1p0xcll2233', 'cle2332+1p0xcle2233', 'cle2332+1p0xcee2233
 
 
 # baseprocs = ['pp_zttmm', 'pp_zmmmm']
-# baseprocs = ['pp_zttmm']
 # baseprocs = ['pp_incttmm']
+
+# baseprocs = ['pp_zttmm'] # for convert/plot acceptances: only zttmm, not incttmm!
 baseprocs = ['pp_incttmm', 'pp_zttmm']
 orders = ['interference', 'purebsm']
 # orders = ['interference']
@@ -167,10 +168,10 @@ def main():
                 commandfiles_per_step['convert'] += commands_convert
                 procnames_to_use_per_step['convert'] += ['%s_%i' % (procname, idx+1) for idx in range(len(commands_convert))]
 
-            # command_plot = gensetup.make_command_plot()
-            # if command_plot is not None:
-            #     commandfiles_per_step['plot'].append(command_plot)
-            #     procnames_to_use_per_step['plot'].append(procname)
+            command_plot = gensetup.make_command_plot()
+            if command_plot is not None:
+                commandfiles_per_step['plot'].append(command_plot)
+                procnames_to_use_per_step['plot'].append(procname)
 
 
 
@@ -188,9 +189,9 @@ def main():
             # print commandfiles_per_step['convert']
             # print procnames_to_use_per_step['convert']
             submit(scriptname=commandfiles_per_step['convert'], procnames=procnames_to_use_per_step['convert'], submissionscript='submit_generic.sh', arguments='%s %s'%(os.environ['MGDIR'], os.environ['CMSSW_BASE']), runtime=(1,00,00), ncores=2)
-        # elif args.plot:
-        #     # print commandfiles_per_step['plot']
-        #     submit(scriptname=commandfiles_per_step['plot'], procnames=procnames_to_use_per_step['plot'], submissionscript='submit_generic.sh', arguments='%s %s'%(os.environ['MGDIR'], os.environ['CMSSW_BASE']), runtime=(1,00,00), ncores=1)
+        elif args.plot:
+            # print commandfiles_per_step['plot']
+            submit(scriptname=commandfiles_per_step['plot'], procnames=procnames_to_use_per_step['plot'], submissionscript='submit_generic.sh', arguments='%s %s'%(os.environ['MGDIR'], os.environ['CMSSW_BASE']), runtime=(1,00,00), ncores=1)
         else:
             raise ValueError('Trying to submit something other than the \'generate\' step, which is not implemented yet.')
 
@@ -894,33 +895,33 @@ class GenerationSetup:
             commandfilenames.append(commandfilename)
         return commandfilenames
 
-    # def make_command_plot(self, filetype='gensim', nfiles=1000):
-    #     commands = []
-    #     if filetype == 'gensim':
-    #         filename_sm = []
-    #         filename_smeft = []
-    #         for idx in range(nfiles):
-    #             fn_sm = os.path.join('_'.join(self.ntuplefolder.split('_')[:-1] + ['sm']), 'events_%s_%i.root' % (filetype, idx+1)).replace('_oldsample', '_smeftsim')
-    #             fn_smeft = os.path.join(self.ntuplefolder, 'events_%s_%i.root' % (filetype, idx+1))
-    #             if is_file_large_enough(filename=fn_sm, min_size=51200):    filename_sm.append(fn_sm)
-    #             if is_file_large_enough(filename=fn_smeft, min_size=51200): filename_smeft.append(fn_smeft)
+    def make_command_plot(self, filetype='gensim', nfiles=1000):
+        commands = []
+        if filetype == 'gensim':
+            filename_sm = []
+            filename_smeft = []
+            for idx in range(nfiles):
+                fn_sm = os.path.join('_'.join(self.ntuplefolder.split('_')[:-1] + ['sm']), 'events_%s_%i.root' % (filetype, idx+1)).replace('_oldsample', '_smeftsim')
+                fn_smeft = os.path.join(self.ntuplefolder, 'events_%s_%i.root' % (filetype, idx+1))
+                if is_file_large_enough(filename=fn_sm, min_size=51200):    filename_sm.append(fn_sm)
+                if is_file_large_enough(filename=fn_smeft, min_size=51200): filename_smeft.append(fn_smeft)
 
-    #     else:
-    #         filename_sm    = os.path.join('_'.join(self.ntuplefolder.split('_')[:-1] + ['sm']), 'events_%s.root' % (filetype))
-    #         filename_smeft = os.path.join(self.ntuplefolder, 'events_%s.root' % (filetype))
-    #         if not os.path.isfile(filename_sm) or not os.path.isfile(filename_smeft): return None
+        else:
+            filename_sm    = os.path.join('_'.join(self.ntuplefolder.split('_')[:-1] + ['sm']), 'events_%s.root' % (filetype))
+            filename_smeft = os.path.join(self.ntuplefolder, 'events_%s.root' % (filetype))
+            if not os.path.isfile(filename_sm) or not os.path.isfile(filename_smeft): return None
 
-    #     if isinstance(filename_sm, list):
-    #         filename_sm = ' '.join(filename_sm)
-    #     if isinstance(filename_smeft, list):
-    #         filename_smeft = ' '.join(filename_smeft)
-    #     command_plot = 'python %s -r %s -a %s -o %s -b %s\n' % (os.path.join(self.workarea, 'plot_ntuples.py'), filename_sm, filename_smeft, self.plotfolder, self.workarea)
-    #     commands.append(command_plot)
+        if isinstance(filename_sm, list):
+            filename_sm = ' '.join(filename_sm)
+        if isinstance(filename_smeft, list):
+            filename_smeft = ' '.join(filename_smeft)
+        command_plot = 'python %s -r %s -a %s -o %s -b %s\n' % (os.path.join(self.workarea, 'plot_ntuples.py'), filename_sm, filename_smeft, self.plotfolder, self.workarea)
+        commands.append(command_plot)
 
-    #     commandfilename = os.path.join(self.commandfolder, 'plot.sh')
-    #     with open(commandfilename, 'w') as f:
-    #         f.writelines(commands)
-    #     return commandfilename
+        commandfilename = os.path.join(self.commandfolder, 'plot.sh')
+        with open(commandfilename, 'w') as f:
+            f.writelines(commands)
+        return commandfilename
 
 def run(scriptname):
     if not isinstance(scriptname, list):
