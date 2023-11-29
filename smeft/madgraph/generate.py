@@ -78,7 +78,8 @@ operators += ['cle2332+1p0xcll2233', 'cle2332+1p0xcle2233', 'cle2332+1p0xcee2233
 # baseprocs = ['pp_incttmm']
 
 # baseprocs = ['pp_zttmm'] # for convert/plot acceptances: only zttmm, not incttmm!
-baseprocs = ['pp_incttmm', 'pp_zttmm']
+baseprocs = ['pp_incttmm', 'pp_zttmm', 'tmvv']
+# baseprocs = ['tmvv']
 orders = ['interference', 'purebsm']
 # orders = ['interference']
 
@@ -96,7 +97,8 @@ procnames = []
 # procnames += ['pp_zttmm_oldsample_sm']
 # procnames += ['pp_zmmmm_smeftsim_sm']
 # procnames += ['pp_incttmm_smeftsim_sm']
-procnames += ['pp_incttmm_smeftsim_sm', 'pp_zttmm_smeftsim_sm']
+procnames += ['pp_incttmm_smeftsim_sm', 'pp_zttmm_smeftsim_sm', 'tmvv_smeftsim_sm']
+# procnames += ['tmvv_smeftsim_sm']
 procnames += ['%s_smeftsim_%s-%s' % (p, order, op) for p in baseprocs for order in orders for op in operators]
 print procnames
 
@@ -211,17 +213,24 @@ def main():
         for p in pbar:
 
             # get values
-            (xsec, xsec_unc, syst_up, syst_down) = get_xsec_from_procname(procname=p, workarea=workarea, with_systs=False)
+            if p.startswith('tmvv'):
+                (value, value_unc) = get_width_from_procname(procname=p, workarea=workarea)
+                syst_up = syst_down = 0.
+            else:
+                (value, value_unc, syst_up, syst_down) = get_xsec_from_procname(procname=p, workarea=workarea, with_systs=False)
 
             # inject them into dict
             (proc, operator) = (p.split('_')[1], p.split('_')[-1])
+            if p.startswith('tmvv'):
+                proc = p.split('_')[0]
             if operator == 'sm':
-                results[operator][proc]['sm'] = (xsec, xsec_unc, syst_up, syst_down)
+                results[operator][proc]['sm'] = (value, value_unc, syst_up, syst_down)
             else:
                 (order, operator) = (operator.split('-')[0], operator.split('-')[1])
-                results[operator][proc][order] = (xsec, xsec_unc, syst_up, syst_down)
+                results[operator][proc][order] = (value, value_unc, syst_up, syst_down)
                 
 
+        
         for operator in results:
             if operator == 'sm': continue
             if not operator in coefficients: coefficients[operator] = {}
@@ -505,6 +514,40 @@ def get_xsec_from_procname(procname, workarea, with_systs=False):
     return (xsec, xsec_unc, syst_up, syst_down)
 
 
+def get_width_from_procname(procname, workarea):
+    file_to_parse = os.path.join(workarea, 'logs', procname, 'generate.log')
+    if not check_generation_successful_width(procname=procname, workarea=workarea): return (None, None, None, None)
+    with open(file_to_parse, 'r') as f:
+        lines = f.readlines()
+    for line in lines:
+        if 'Survey return zero cross section' in line: return (0., 0.)
+        if 'Width :' in line: line_width = line
+
+    # find correct lines to parse and set up the patterns
+    pattern_width = '{}:   {} +- {} GeV\n'
+
+    # do the parsing
+    parser_width  = parse.compile(pattern_width)
+
+    pre, width, width_unc = parser_width.parse(line_width)
+    width, width_unc      = float(width), float(width_unc)
+
+    print (width, width_unc)
+    return (width, width_unc)
+
+
+def check_generation_successful_width(procname, workarea):
+    # checks generate.log for unexpected crashes, i.e. being unable to extract the xsec. However, crashing because of 0 xsec is OK.
+
+    file_to_parse = os.path.join(workarea, 'logs', procname, 'generate.log')
+    with open(file_to_parse, 'r') as f:
+        lines = f.readlines()
+    for line in lines:
+        if 'Survey return zero cross section' in line: return True
+        if 'Width :' in line: return True
+    return False
+
+
 def check_generation_successful(procname, workarea, need_systs=False):
     # checks generate.log for unexpected crashes, i.e. being unable to extract the xsec. However, crashing because of 0 xsec is OK.
 
@@ -616,6 +659,8 @@ class GenerationSetup:
             'pp_zttmm_sm_sm':         'generate p p > z > mu+ mu- ta+ ta- / h ', 
             'pp_zmmmm_smeftsim_sm':   'generate p p > z > mu+ mu- mu+ mu- / h NP=0 SMHLOOP=0 NPprop=0', 
             'pp_zmmmm_sm_sm':         'generate p p > z > mu+ mu- mu+ mu- / h ', 
+            'tmvv_smeftsim_sm':       'generate ta- > mu- vt vm~ / h NP=0 SMHLOOP=0 NPprop=0', 
+            'tmvv_sm_sm':             'generate ta- > mu- vt vm~ / h ', 
 
             'pp_zttmm_smeftsim_interference':   'generate p p > z > mu+ mu- ta+ ta- / h NP<=1 NP^2==1 SMHLOOP=0 NProp=0',
             'pp_zttmm_smeftsim_purebsm':        'generate p p > z > mu+ mu- ta+ ta- / h NP==1 SMHLOOP=0 NProp=0',
@@ -623,6 +668,8 @@ class GenerationSetup:
             'pp_incttmm_smeftsim_purebsm':      'generate p p > mu+ mu- ta+ ta- / h NP==1 SMHLOOP=0 NProp=0',
             'pp_zmmmm_smeftsim_interference':   'generate p p > z > mu+ mu- mu+ mu- / h NP<=1 NP^2==1 SMHLOOP=0 NProp=0',
             'pp_zmmmm_smeftsim_purebsm':        'generate p p > z > mu+ mu- mu+ mu- / h NP==1 SMHLOOP=0 NProp=0',
+            'tmvv_smeftsim_interference':       'generate ta- > mu- vt vm~ / h NP<=1 NP^2==1 SMHLOOP=0 NProp=0',
+            'tmvv_smeftsim_purebsm':            'generate ta- > mu- vt vm~ / h NP==1 SMHLOOP=0 NProp=0',
 
         }
         self.modelnames_per_proc = {
@@ -631,6 +678,8 @@ class GenerationSetup:
             'pp_zttmm_sm_sm':         'sm', 
             'pp_zmmmm_smeftsim_sm':   'SMEFTsim_top_alphaScheme_UFO-Zmmtt', 
             'pp_zmmmm_sm_sm':         'sm', 
+            'tmvv_smeftsim_sm':       'SMEFTsim_top_alphaScheme_UFO-Zmmtt', 
+            'tmvv_sm_sm':             'sm', 
 
             'pp_zttmm_smeftsim_interference':   'SMEFTsim_top_alphaScheme_UFO-Zmmtt', 
             'pp_zttmm_smeftsim_purebsm':        'SMEFTsim_top_alphaScheme_UFO-Zmmtt', 
@@ -638,6 +687,8 @@ class GenerationSetup:
             'pp_incttmm_smeftsim_purebsm':      'SMEFTsim_top_alphaScheme_UFO-Zmmtt', 
             'pp_zmmmm_smeftsim_interference':   'SMEFTsim_top_alphaScheme_UFO-Zmmtt', 
             'pp_zmmmm_smeftsim_purebsm':        'SMEFTsim_top_alphaScheme_UFO-Zmmtt', 
+            'tmvv_smeftsim_interference':       'SMEFTsim_top_alphaScheme_UFO-Zmmtt', 
+            'tmvv_smeftsim_purebsm':            'SMEFTsim_top_alphaScheme_UFO-Zmmtt', 
         }
 
         self.param_settings_common = OrderedDict() # All MG_2.7.2 default from model 'sm'
@@ -782,6 +833,15 @@ class GenerationSetup:
         # now "customizecard" content modifying run_card and param_card: proc-specific settings
         # gencard_text += ['set param_card %s %f\n' % (key, self.param_settings_specific[self.procname][key]) for key in self.param_settings_specific[self.procname].keys()]
         gencard_text += ['set param_card %s %f\n' % (key, self.param_settings_specific[key]) for key in self.param_settings_specific.keys()]
+
+        # for the tau decay, remove the PDF (reset to MG default) and switch off cuts
+        if self.procname.startswith('tmvv'):
+            gencard_text.append('set run_card pdlabel nn23lo1\n')
+            gencard_text.append('set run_card lhaid 230000\n')
+            gencard_text.append('set run_card ptl 0.0\n')
+            gencard_text.append('set run_card mmnl 0.0\n')
+            gencard_text.append('set run_card mmnlmax -1.0\n')
+            gencard_text.append('set run_card mmll 0.0\n')
 
 
         # print self.operatorsettings

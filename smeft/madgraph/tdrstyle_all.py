@@ -15,7 +15,6 @@ rt.gStyle.SetOptFit(0)
 cms_lumi_TeV = ""
 
 cmsText     = "CMS"
-# extraText   = "Preliminary"
 extraText   = ""
 extraText2  = "" # For Simulation Preliminary on two lines
 
@@ -179,7 +178,7 @@ def setTDRStyle():
 # CMS_lumi  #
 #############
 
-def CMS_lumi(pad, iPosX=11, lumitag='138 fb^{-1} (13 TeV)'):
+def CMS_lumi(pad, iPosX=11, lumitag='138 fb^{-1} (13 TeV)', extraText=''):
   outOfFrame = False
   if(iPosX/10==0 ): outOfFrame = True
   alignY_=3
@@ -281,7 +280,7 @@ def CMS_lumi(pad, iPosX=11, lumitag='138 fb^{-1} (13 TeV)'):
 
 
 # Create canvas with predefined axix and CMS logo
-def tdrCanvas(canvName, x_min, x_max, y_min, y_max, nameXaxis, nameYaxis, square=kRectangular, iPos=11, is2D=False, isExtraSpace=False, lumitag='138 fb^{-1} (13 TeV)', margins=(None, None, None, None), maxdigits=(None, None)):
+def tdrCanvas(canvName, x_min, x_max, y_min, y_max, nameXaxis, nameYaxis, square=kRectangular, iPos=11, is2D=False, isExtraSpace=False, lumitag='138 fb^{-1} (13 TeV)', margins=(None, None, None, None), maxdigits=(None, None), return_hist=False, extraText='', ndivisions=(None, None)):
   # iPos parameter defines the position of the CMS logo in the plot
   # iPos=11 : top-left, left-aligned
   # iPos=33 : top-right, right-aligned
@@ -321,6 +320,8 @@ def tdrCanvas(canvName, x_min, x_max, y_min, y_max, nameXaxis, nameYaxis, square
   h.GetXaxis().SetTitleOffset((0.9 if is2D else 1.0)  if square else (1.0 if isExtraSpace else 0.9))
   h.GetXaxis().SetTitle(nameXaxis)
   h.GetYaxis().SetTitle(nameYaxis)
+  if ndivisions[0] != None: h.GetXaxis().SetNdivisions(ndivisions[0])
+  if ndivisions[1] != None: h.GetYaxis().SetNdivisions(ndivisions[1])
 
   if maxdigits[0] is not None: h.GetXaxis().SetMaxDigits(maxdigits[0])
   if maxdigits[1] is not None: h.GetYaxis().SetMaxDigits(maxdigits[1])
@@ -328,11 +329,14 @@ def tdrCanvas(canvName, x_min, x_max, y_min, y_max, nameXaxis, nameYaxis, square
   h.Draw("AXIS")
 
   # writing the lumi information and the CMS "logo"
-  CMS_lumi(canv, iPos, lumitag=lumitag)
+  CMS_lumi(canv, iPos, lumitag=lumitag, extraText=extraText)
   canv.Update()
   canv.RedrawAxis()
   canv.GetFrame().Draw()
-  return canv
+  if not return_hist:
+    return canv
+  else:
+     return canv, h
 
 def GettdrCanvasHist(canv):
   return canv.GetListOfPrimitives().FindObject("hframe")
